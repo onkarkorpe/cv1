@@ -384,7 +384,7 @@ section{
     content: "get in touch";
 }
 .contact .contact-content .column{
-    width: calc(35% - 30px);
+    width: calc(50% - 60px);
 }
 .contact .contact-content .text{
     font-size: 20px;
