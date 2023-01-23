@@ -377,6 +377,9 @@ section{
 }
 
 /*contact section start*/
+.contact .contact-content{
+    align-items: unset;
+}
 .contact .title::after{
     content: "get in touch";
 }
