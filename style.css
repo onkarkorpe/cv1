@@ -391,6 +391,9 @@ section{
     font-weight: 600;
     margin-bottom: 10px;
 }
+.contact .contact-content .left{
+    width: 45%;
+}
 .contact .contact-content .left p{
     text-align: justify;
 }
