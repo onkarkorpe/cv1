@@ -5,6 +5,8 @@
     <title>Photography</title>
     <style>
         *{
+            margin: 0;
+            padding: 0;
             box-sizing: border-box;
         }
         body{
@@ -12,47 +14,111 @@
             background: gray;
         }
         .container{
+            position: relative;
+            min-height: 100vh;
             max-width: 1200px;
             margin:auto;
             background: #f2f2f2;
             overflow: auto;
         }
-        .gallery{
-            margin: 5px;
-            border: 1px solid #ccc;
-            float: left;
-            width: 390px;
+        .container .image-container{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            padding: 10px;
         }
-        .gallery img{
+        .container .image-container .image{
+            height: 250px;
+            width: 350px;
+            border: 10px solid #fff;
+            box-shadow: 0 5px 15px rgba(0,0,0,1);
+            overflow: hidden;
+            cursor: pointer;
+        }
+        .container .image-container .image img{
+            height: 100%;
             width: 100%;
-            height: auto;
+            object-fit: cover;
+            transition: linear;
         }
-        .desc{
-            padding: 15px;
-            text-align:center ;
+        .container .image-container .image:hover img{
+            transform: scale(1.1);
+        }
+        .container .popup-image{
+            position: fixed;
+            top: 0; left: 0;
+            background: #111;
+            height: 100%;
+            width: 100%;
+            z-index: 100;
+            display: none;
+        }
+        .container .popup-image span{
+            position: absolute;
+            top: 0; right: 10px;
+            font-size: 60px;
+            font-weight: bolder;
+            color: #fff;
+            cursor: pointer;
+            z-index: 100;
+        }
+        .container .popup-image img{
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%,-50%);
+            border: 5px solid #fff;
+            border-radius: 5px;
+            width: 750px;
+            object-fit: cover;
+        }
+        @media (max-width:768px){
+            .container .popup-image img{
+                width: 95%;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="gallery">
-            <img src="photography/Image1.jpg">
+        <div class="image-container">
+        <div class="image">
+            <img src="/photography/Image1.jpg">
         </div>
-        <div class="gallery">
-            <img src="photography/Image2.jpg">
+        <div class="image">
+            <img src="/photography/Image2.jpg">
         </div>
-        <div class="gallery">
-            <img src="photography/Image3.jpg">
+        <div class="image">
+            <img src="/photography/Image3.jpg">
         </div>
-        <div class="gallery">
-            <img src="photography/Image4.jpg">
+        <div class="image">
+            <img src="/photography/Image4.jpg">
         </div>
-        <div class="gallery">
-            <img src="photography/Image5.jpg">
+        <div class="image">
+            <img src="/photography/Image5.jpg">
         </div>
-        <div class="gallery">
-            <img src="photography/Image6.jpg">
+        <div class="image">
+            <img src="/photography/Image6.jpg">
+        </div>
+        </div>
+
+        <div class="popup-image">
+            <span>&times;</span>
+            <img src="/photography/Image1.jpg" alt="">
         </div>
     </div>
+
+    <script>
+        document.querySelectorAll('.image-container img').forEach(image =>{
+            image.onclick = () =>{
+            document.querySelector('.popup-image').style.display = 'block';
+            document.querySelector('.popup-image img').src = image.getAttribute('src');
+            }
+        })
+
+        document.querySelector('.popup-image span').onclick = () =>{
+            document.querySelector('.popup-image').style.display = 'none';  
+        }
+    </script>
 </body>
 </html>
